@@ -1,0 +1,12 @@
+body {
+    padding-top: 50px;
+    background-color: 	#DCDCDC;
+}
+.form1 {
+    display: flex;
+    justify-content: center;
+   
+}
+.form2 {
+    width: 400px;
+}

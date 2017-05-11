@@ -1,0 +1,48 @@
+{% extends 'TaskPlannerBundle::taskbase.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/jumbotron-narrow.css') }}"
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_USER')%}
+        <div class="container col-md-12 col-sm-12 col-xs-12">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a  class="navbar-brand" href="{{ url('main')}}">Add Tasks and Categories</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a class="btn btn-brand" href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+            <div class="jumbotron">
+                <h1>Task Planner</h1>
+                <p><a class="btn btn-lg btn-info" href="{{ url('taskList')}}" role="button">Task Manager</a></p>
+            </div>
+            <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+                <div class="container text-center">
+                    <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; Kamilos</p>
+                </div>
+            </nav>
+        </div>
+    {% else %}
+        <div class="container col-md-12 col-sm-12 col-xs-12">
+                    <button type="button" class="btn btn-brand pull-right"><a href="/login">Sign in</a></button>
+
+            <div class="jumbotron">
+                <h1>Task Planner</h1>
+                <p class="lead">Welcome to Task Planner!</p>
+                <p><a class="btn btn-lg btn-info" href="/register" role="button">Sign up today</a></p>
+            </div>
+                <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+                    <div class="container text-center">
+                        <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; Kamilos</p>
+                    </div>
+                </nav>
+            </div>
+    {%endif%}
+{% endblock %}

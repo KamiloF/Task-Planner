@@ -1,0 +1,56 @@
+body {
+    padding-top: 50px;
+    background-color: 	#DCDCDC;
+}
+.date {
+    white-space: nowrap;
+}
+.table1 {
+    flex-shrink: 1;
+    margin: 20px;
+    width: auto;
+}
+
+.table2 {
+    flex-shrink: 1;
+    margin: 20px;
+    width: auto;
+}
+
+.tables {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.containLast {
+    display: flex;
+    justify-content: center;
+}
+
+.last {
+    flex-shrink: 1;
+    margin: 20px;
+    width: auto;
+    justify-content: space-around;
+}
+
+.table {
+    border: 1px solid black;
+}
+
+.table1 th {
+    background-color: lightblue;
+}
+
+.table2 th {
+    background-color: lightgreen;
+}
+
+.last th {
+    background-color:#f74251;
+}
+
+.all {
+    position: center;
+}

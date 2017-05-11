@@ -1,0 +1,36 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+<div class="form-signin">
+    <div id="legend">
+        <legend class="">Register</legend>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div>
+        <label for="username">Username:</label>
+        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div>
+        <label for="plainPassword">Password:</label>
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div>
+        <label for="plainPassword">Repeat Password:</label>
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Register" />
+    </div>
+
+</div>
+{{ form_end(form) }}
+
+

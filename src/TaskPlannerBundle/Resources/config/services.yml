@@ -1,0 +1,4 @@
+services:
+#    task_planner.example:
+#        class: TaskPlannerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

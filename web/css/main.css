@@ -1,0 +1,35 @@
+body {
+    padding-top: 50px;
+    background-color: 	#DCDCDC;
+}
+.forms{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 50px;
+}
+.form1{
+    maring-left: 100px;
+}
+.form2{
+    margin-right: 100px;
+}
+.table1 {
+    
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.table1 th {
+    background-color: #32a6e5; 
+}
+.table1, th, td {
+    border: 2px solid black;
+}
+
+#a {
+    margin-left:100px;
+}

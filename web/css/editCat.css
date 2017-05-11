@@ -1,0 +1,18 @@
+body {
+    padding-top: 70px;
+    background-color: 	#DCDCDC;
+}
+.table1 {
+    display: flex;
+    justify-content: space-around;
+   
+}
+.table2 {
+    width: 400px;
+}
+table th {
+    background-color: #42c2f4;
+}
+span {
+    color: red;
+}

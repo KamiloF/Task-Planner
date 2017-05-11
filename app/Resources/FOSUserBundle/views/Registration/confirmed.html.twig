@@ -1,0 +1,16 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <h2>Welcome to Task Planner {{ user.username }}, Your registration is confirmed.<br>
+        Go to <a href="{{ url('taskList')}}">YOUR TASKS</a>!
+    </h2>
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock fos_user_content %}

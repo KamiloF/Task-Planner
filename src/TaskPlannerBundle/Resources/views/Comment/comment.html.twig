@@ -1,0 +1,56 @@
+{% extends "TaskPlannerBundle::taskbase.html.twig" %}
+
+{% block title %}TaskPlannerBundle:Task:comment{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/comment.css')}}">{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url('user_index')}}">Task Planner</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{{ url('taskList')}}" >Task Manager</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="form1">
+        <div class="form2">
+            {{ form_start(form) }}
+            <div class="form-signin">
+                <h4>Add Comment:</h4>
+                <div >
+                    {{ form_widget(form.text, {'attr':{'class':'form-control'}}) }}
+                </div>
+                {{ form_widget(form.save, {'attr':{'class':'btn btn-lg btn-primary btn-block'}}) }}
+            </div>
+            {{ form_end(form)}}
+        </div>
+    </div>
+
+    <div class="table">
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>COMMENT</th>
+                <th>DELETE</th>
+            </tr>
+            {% for comment in comments %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{comment.text}}</td>
+                    <td><a class="btn btn-danger" href="{{ url('deleteCom', {'id':comment.id})}}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation">
+            <div class="container text-center">
+                <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; Kamilos</p>
+            </div>
+        </nav>
+    </div>
+{% endblock %}

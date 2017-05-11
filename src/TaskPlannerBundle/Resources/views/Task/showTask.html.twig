@@ -1,0 +1,52 @@
+{% extends "TaskPlannerBundle::taskbase.html.twig" %}
+
+{% block title %}TaskPlannerBundle:Task:showTask{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/editTask.css')}}">{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url('user_index')}}">Task Planner</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{{ url('taskList')}}" >Task Manager</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="form1">
+        <div class="form2">
+            {{ form_start(form) }}
+            <div class="form-signin">
+                <h4>Task:</h4>
+                <div >
+                    <label for="category">Category(required):</label>
+                    {{ form_widget(form.category, {'attr':{'class':'form-control'}}) }}
+                </div>
+                <div >
+                    <label for="name">Task Name:</label>
+                    {{ form_widget(form.name, {'attr':{'class':'form-control', 'placeholder':'Task Name'}}) }}
+                </div>
+                <div >
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description, {'attr':{'class':'form-control', 'placeholder':'Task Description'}}) }}
+                </div>
+                <div>
+                    <label for="name">Task End Date:</label>
+                    {{ form_widget(form.deadLine, {'attr':{'class':'form-control'}}) }}
+                </div>
+
+            </div>
+            {{ form_end(form)}}
+        </div>
+        <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation">
+            <div class="container text-center">
+                <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; Kamilos</p>
+            </div>
+        </nav>
+    </div>
+{% endblock %}

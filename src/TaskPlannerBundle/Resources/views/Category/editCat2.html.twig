@@ -1,0 +1,42 @@
+{% extends 'TaskPlannerBundle::taskbase.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/editCat2.css')}}">{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url('user_index')}}">Task Planner</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{{ url('taskList')}}" >YOUR TASKS</a></li>
+                    <li><a  class="navbar-brand" href="{{ url('main')}}">Add Tasks and Categories</a></li>
+                    <li><a  class="navbar-brand" href="{{ url('editCat')}}">Category Manager</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="btn btn-default" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="form1">
+        <div class="form2">
+            {{ form_start(form) }}
+            <div class="form-signin">
+                <h4>Edit Category:</h4>
+                <div >
+                    <label for="category">Category(required):</label>
+                    {{ form_widget(form.name, {'attr':{'class':'form-control'}}) }}
+                </div>
+                {{ form_widget(form.save, {'attr':{'class':'btn btn-lg btn-primary btn-block'}}) }}
+            </div>
+            {{ form_end(form)}}
+        </div>
+        <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation">
+            <div class="container text-center">
+                <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; Kamilos</p>
+            </div>
+        </nav>
+    </div>
+{% endblock %}
