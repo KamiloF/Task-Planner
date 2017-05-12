@@ -2,13 +2,14 @@
 
 namespace TaskPlannerBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use TaskPlannerBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use TaskPlannerBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -22,7 +23,10 @@ class CommentController extends Controller
      * Creates a new comment entity.
      *
      * @Route("/{id}/addComm", name="addComm")
-     *@Method({"GET","POST"})
+     * @Method({"GET","POST"})
+     * @param Request $request
+     * @param $id
+     * @return Response
      */
     public function newAction(Request $request, $id)
     {
@@ -33,9 +37,9 @@ class CommentController extends Controller
         $form = $this->createFormBuilder($comment)
             ->setAction($this->generateUrl('addComm', ['id'=>$id]))
             ->setMethod('POST')
-            ->add('text', 'textarea', array(
+            ->add('text', TextareaType::class, array(
                 'attr'=>array('cols'=>20, 'rows'=>5)))
-            ->add('save', 'submit')
+            ->add('save', SubmitType::class)
             ->getForm();
 
         $comments = $task->getComments();
@@ -59,9 +63,12 @@ class CommentController extends Controller
         ));
 
     }
+
     /**
      * @Route("/{id}/deleteCom", name="deleteCom")
-     *
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteComAction(Request $request, $id)
     {
@@ -86,9 +93,9 @@ class CommentController extends Controller
         $form = $this->createFormBuilder($comment)
             ->setAction($this->generateUrl('addComm', ['id'=>$id]))
             ->setMethod('POST')
-            ->add('text', 'textarea', array(
+            ->add('text', TextareaType::class, array(
                 'attr'=>array('cols'=>20, 'rows'=>5)))
-            ->add('save', 'submit')
+            ->add('save', SubmitType::class)
             ->getForm();
 
         $comments = $task->getComments();

@@ -2,7 +2,9 @@
 
 namespace TaskPlannerBundle\Controller;
 
-use TaskPlannerBundle\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -10,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use TaskPlannerBundle\Entity\Category;
 use TaskPlannerBundle\Entity\Task;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 /**
  * User controller.
@@ -39,8 +40,8 @@ class UserController extends Controller
         $form = $this->createFormBuilder($category)
             ->setAction($this->generateUrl('category_new'))
             ->setMethod('POST')
-            ->add('name', 'text')
-            ->add('save', 'submit', array('label'=>'Save Category'))
+            ->add('name', TextType::class)
+            ->add('save', SubmitType::class, array('label'=>'Save Category'))
             ->getForm();
 
         $task = new Task();
@@ -61,8 +62,8 @@ class UserController extends Controller
                         ->setParameter('identifier', $user1);
                 }
             ))
-            ->add('name', 'text')
-            ->add('description', 'textarea')
+            ->add('name', TextType::class)
+            ->add('description', TextareaType::class)
             ->add('deadLine', DateType::class, array(
                 'widget' => 'single_text',
             ))

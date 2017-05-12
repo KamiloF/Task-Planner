@@ -81,7 +81,7 @@ class Category
      * @param \TaskPlannerBundle\Entity\User $user
      * @return Category
      */
-    public function setUser(\TaskPlannerBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -104,7 +104,7 @@ class Category
      * @param \TaskPlannerBundle\Entity\Task $tasks
      * @return Category
      */
-    public function addTask(\TaskPlannerBundle\Entity\Task $tasks)
+    public function addTask(Task $tasks)
     {
         $this->tasks[] = $tasks;
 
@@ -116,7 +116,7 @@ class Category
      *
      * @param \TaskPlannerBundle\Entity\Task $tasks
      */
-    public function removeTask(\TaskPlannerBundle\Entity\Task $tasks)
+    public function removeTask(Task $tasks)
     {
         $this->tasks->removeElement($tasks);
     }

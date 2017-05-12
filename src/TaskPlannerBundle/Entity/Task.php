@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Task
 {
     /**
-     * @var intlogin
+     * @var int login
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -64,7 +64,6 @@ class Task
     public function __construct() {
         $this->comments = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -151,7 +150,7 @@ class Task
      * @param \TaskPlannerBundle\Entity\Category $category
      * @return Task
      */
-    public function setCategory(\TaskPlannerBundle\Entity\Category $category = null)
+    public function setCategory(Category $category = null)
     {
         $this->category = $category;
 
@@ -174,7 +173,7 @@ class Task
      * @param \TaskPlannerBundle\Entity\Comment $comments
      * @return Task
      */
-    public function addComment(\TaskPlannerBundle\Entity\Comment $comments)
+    public function addComment(Comment $comments)
     {
         $this->comments[] = $comments;
 
@@ -186,7 +185,7 @@ class Task
      *
      * @param \TaskPlannerBundle\Entity\Comment $comments
      */
-    public function removeComment(\TaskPlannerBundle\Entity\Comment $comments)
+    public function removeComment(Comment $comments)
     {
         $this->comments->removeElement($comments);
     }
@@ -231,7 +230,7 @@ class Task
      * @param \TaskPlannerBundle\Entity\User $user
      * @return Task
      */
-    public function setUser(\TaskPlannerBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 

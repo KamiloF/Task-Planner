@@ -2,6 +2,8 @@
 
 namespace TaskPlannerBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use TaskPlannerBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -22,6 +24,8 @@ class CategoryController extends Controller
      *
      * @Route("/newCategory", name="category_new")
      * @Method({"POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function newAction(Request $request)
     {
@@ -30,8 +34,8 @@ class CategoryController extends Controller
         $form = $this->createFormBuilder($user)
             ->setAction($this->generateUrl('category_new'))
             ->setMethod('POST')
-            ->add('name', 'text')
-            ->add('save', 'submit', array('label'=>'Save Category'))
+            ->add('name', TextType::class)
+            ->add('save', SubmitType::class, array('label'=>'Save Category'))
             ->getForm();
 
         $form->handleRequest($request);
@@ -56,9 +60,12 @@ class CategoryController extends Controller
         }
         return $this->redirectToRoute('main');
     }
+
     /**
      * @Route("/editCat", name="editCat")
      * Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editCatAction(Request $request)
     {
@@ -69,8 +76,12 @@ class CategoryController extends Controller
         return $this->render('TaskPlannerBundle:Category:editCat.html.twig',
             array('categories'=>$categories));
     }
+
     /**
      * @Route("/{id}/editCatNext", name="editCatNext")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editCat2Action(Request $request, $id)
     {
@@ -79,8 +90,8 @@ class CategoryController extends Controller
         $form = $this->createFormBuilder($category)
             ->setAction($this->generateUrl('editCatNext', ['id'=>$id]))
             ->setMethod('POST')
-            ->add('name', 'text')
-            ->add('save', 'submit', array('label'=>'Commit Changes!'))
+            ->add('name', TextType::class)
+            ->add('save', SubmitType::class, array('label'=>'Commit Changes!'))
             ->getForm();
 
         if ($request->isMethod('GET'))
@@ -104,8 +115,12 @@ class CategoryController extends Controller
             return $this->redirectToRoute('taskList');
         }
     }
+
     /**
      * @Route("/{id}/deleteCat", name="deleteCat")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteCatAction(Request $request, $id)
     {

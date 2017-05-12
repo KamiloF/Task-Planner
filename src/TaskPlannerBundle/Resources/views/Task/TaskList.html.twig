@@ -6,7 +6,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ url('user_index')}}">Task Planner</a>
+                <a class="navbar-brand" href="{{ url('user_index')}}"><span class="glyphicon glyphicon-home"></span> Task Planner</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -14,7 +14,7 @@
                     <li><a  class="navbar-brand" href="{{ url('editCat')}}">Category Manager</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="btn btn-brand" href="/logout">Logout</a></li>
+                    <li><a class="btn btn-brand" href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -68,7 +68,6 @@
                         <th>Id:</th>
                         <th>Name:</th>
                         <th>Task End Date:</th>
-                        <th>More</th>
                         <th>Delete</th>
                     </tr>
                     {% for task in taskStatus %}
@@ -76,7 +75,6 @@
                             <td>{{ loop.index }}</td>
                             <td><strong>{{ task.name }}</strong></td>
                             <td><span class="date">{{ task.deadLine.date | date('Y-m-d')}}</span></td>
-                            <td><a class="btn btn-default" href="{{ url('showTask', {'id':task.id})}}">Info</a></td>
                             <td><a class="btn btn-default" href="{{ url('deleteTask', {'id':task.id})}}">Delete</a></td>
                         </tr>
 
@@ -105,7 +103,7 @@
                             <td>{{ task.description | length > 50 ? task.description | slice(0,50)~'...':task.description}}</td>
                             <td>{{ task.category.name}}</td>
                             <td><span class="date">{{ task.deadLine.date | date('Y-m-d')}}</span></td>
-                            <td><a class="btn btn-default" href="{{ url('showTask', {'id':task.id})}}">Edit</a></td>
+                            <td><a class="btn btn-default" href="{{ url('editTask', {'id':task.id})}}">Edit</a></td>
                             <td><a class="btn btn-default" href="{{ url('deleteTask', {'id':task.id})}}">Delete</a></td>
                         </tr>
 

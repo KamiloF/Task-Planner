@@ -42,7 +42,7 @@ class User extends BaseUser
      * @param \TaskPlannerBundle\Entity\Category $categories
      * @return User
      */
-    public function addCategory(\TaskPlannerBundle\Entity\Category $categories)
+    public function addCategory(Category $categories)
     {
         $this->categories[] = $categories;
 
@@ -54,7 +54,7 @@ class User extends BaseUser
      *
      * @param \TaskPlannerBundle\Entity\Category $categories
      */
-    public function removeCategory(\TaskPlannerBundle\Entity\Category $categories)
+    public function removeCategory(Category $categories)
     {
         $this->categories->removeElement($categories);
     }
@@ -75,7 +75,7 @@ class User extends BaseUser
      * @param \TaskPlannerBundle\Entity\Task $tasks
      * @return User
      */
-    public function addTask(\TaskPlannerBundle\Entity\Task $tasks)
+    public function addTask(Task $tasks)
     {
         $this->tasks[] = $tasks;
 
@@ -87,7 +87,7 @@ class User extends BaseUser
      *
      * @param \TaskPlannerBundle\Entity\Task $tasks
      */
-    public function removeTask(\TaskPlannerBundle\Entity\Task $tasks)
+    public function removeTask(Task $tasks)
     {
         $this->tasks->removeElement($tasks);
     }

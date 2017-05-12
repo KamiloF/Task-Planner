@@ -96,7 +96,7 @@ class Comment
      * @param \TaskPlannerBundle\Entity\Task $task
      * @return Comment
      */
-    public function setTask(\TaskPlannerBundle\Entity\Task $task = null)
+    public function setTask(Task $task = null)
     {
         $this->task = $task;
 
